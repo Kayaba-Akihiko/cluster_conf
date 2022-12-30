@@ -1,11 +1,17 @@
 # Disable GUI.
-
 ```
 sudo systemctl set-default multi-user
 ```
 
-# Change host name.
+# Change password
+```
+sudo passwd {username}
+# Change password.
+```
+sudo passwd {username}
+```
 
+# Change host name.
 ```
 hostnamectl set-hostname {new_nostname}
 ```
@@ -19,8 +25,12 @@ sudo passwd root
 ```
 exit
 ```
-
-# log in with root and change username and home folder
+## log in with root and change username and home folder
 ```
 usermod -l {newname} -d /home/{newname} -m {oldname}
+```
+## lock root and exit
+```
+passwd -l root
+exit
 ```
