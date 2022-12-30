@@ -81,3 +81,29 @@ ip addr
 ```shell
 ping 8.8.8.8
 ```
+
+# Login via ssh
+```shell
+ssh ${username}@163.221.196.**
+```
+
+# Uninstall old Nvidia driver
+```shell
+sudo nvidia-uninstall
+```
+## if docker, nvidia-docker2 are installed, remove.
+```shell
+sudo apt-get remove nvidia-docker2 -y
+sudo apt-get remove docker -y
+sudo rm -r /etc/docker
+```
+## clean other Nvidia files
+```shell
+sudo apt-get remove --purge '^nvidia-.*' -y
+sudo apt-get autoremove -y
+```
+## reboot
+```shell
+sudo reboot
+```
+
