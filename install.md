@@ -52,16 +52,19 @@ network:
     version: 2
     ethernets:
         port_like_enp0***:
-        dhcp4: no
-        gateway4: 163.221.196.1
-        addresses:
-          - 163.221.196.***/24
-        nameservers:
+            dhcp4: no
+#            gateway4: 163.221.196.1
+            routes:
+              - to: default
+                via: 163.221.196.1
             addresses:
-              - 163.221.196.150
-              - 163.221.196.200
-            search:
-              - image.local
+              - 163.221.196.***/24
+            nameservers:
+                addresses:
+                  - 163.221.196.150
+                  - 163.221.196.200
+                search:
+                  - image.local
             
 ```
 ## Apply 
@@ -71,5 +74,10 @@ sudo netplan apply
 
 ## check ip address
 ```shell 
-ip -a
+ip addr
+```
+
+## check network connection
+```shell
+ping 8.8.8.8
 ```
