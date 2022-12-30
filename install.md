@@ -6,9 +6,6 @@ sudo systemctl set-default multi-user
 # Change password
 ```
 sudo passwd {username}
-# Change password.
-```
-sudo passwd {username}
 ```
 
 # Change host name.
