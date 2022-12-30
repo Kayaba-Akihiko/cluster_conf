@@ -54,6 +54,8 @@ network:
         {port like enp0***}:
         dhcp4: no
         gateway4: 163.221.196.1
+        addresses:
+          - 163.221.196.***/24
         nameservers:
             addresses:
               - 163.221.196.150
