@@ -1,3 +1,6 @@
+# Assumption
+Assuming Ubuntu OS (20.04 or 22.04) is reinstalled.
+
 # Change password
 ```shell
 sudo passwd ${username}
@@ -72,12 +75,12 @@ network:
 sudo netplan apply
 ```
 
-## check ip address
+## Check ip address
 ```shell 
 ip addr
 ```
 
-## check network connection
+## Check network connection
 ```shell
 ping 8.8.8.8
 ```
@@ -91,19 +94,51 @@ ssh ${username}@163.221.196.**
 ```shell
 sudo nvidia-uninstall
 ```
-## if docker, nvidia-docker2 are installed, remove.
+## If docker and nvidia-docker2 are installed, remove.
 ```shell
 sudo apt-get remove nvidia-docker2 -y
 sudo apt-get remove docker -y
 sudo rm -r /etc/docker
 ```
-## clean other Nvidia files
+## Clean other Nvidia files
 ```shell
 sudo apt-get remove --purge '^nvidia-.*' -y
+sudo apt-get remove --purge '^libnvidia-.*' -y
+sudo apt-get remove --purge '^cuda-.*' -y
 sudo apt-get autoremove -y
 ```
+
 ## reboot
+Be careful of enabled Secure Boot.
+If it is enabled, you have to access the machine with an connected monitor to proceed with the passwd you were asked to set during the packages removing instead of accessing by ssh.
 ```shell
 sudo reboot
 ```
 
+# Install new Nvidia driver
+## Check latest version
+```shell
+sudo apt-get update
+sudo apt search '^nvidia-driver.+server$'
+```
+## Install the latest one
+```shell
+sudo apt-get install nvidia-driver-***-server -y
+```
+## reboot
+Samely be careful of enabled Secure Boot.
+```shell
+sudo reboot
+```
+
+# Firewall.
+```shell
+sudo ufw allow from 163.221.196.0/24
+sudo ufw enable
+```
+
+# SSSD and Active Directory
+Baiscally followed steps from [here](https://ubuntu.com/server/docs/service-sssd-ad)
+```shell
+sudo apt install sssd-ad sssd-tools realmd adcli -y
+```
