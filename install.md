@@ -51,7 +51,7 @@ sudo vim /etc/netplan/cloud-init.yaml
 network:
     version: 2
     ethernets:
-        {port like enp0***}:
+        port_like_enp0***:
         dhcp4: no
         gateway4: 163.221.196.1
         addresses:
