@@ -111,6 +111,7 @@ sudo apt-get autoremove -y
 ## reboot
 Be careful of enabled Secure Boot.
 If it is enabled, you have to access the machine with an connected monitor to proceed with the passwd you were asked to set during the packages removing instead of accessing by ssh.
+Select Enroll MOK and enter the passwd you set after reboot if Secure Boot is enabled.
 ```shell
 sudo reboot
 ```
@@ -127,9 +128,16 @@ sudo apt-get install nvidia-driver-***-server -y
 ```
 ## reboot
 Samely be careful of enabled Secure Boot.
+If driver install failed, uninstall it and install it gain with the previous steps.
 ```shell
 sudo reboot
 ```
+
+## test
+```shell
+nvidia-smi
+```
+We don't need CUDA to be installed.
 
 # Firewall.
 ```shell
