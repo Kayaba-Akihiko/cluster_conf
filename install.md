@@ -1,6 +1,6 @@
 # Change password
-```
-sudo passwd {username}
+```shell script
+sudo passwd ${username}
 ```
 
 # Disable GUI.
